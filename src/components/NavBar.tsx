@@ -6,6 +6,7 @@ const NavBar = () => {
 		<HStack>
 			<Image
 				src={logo}
+				alt="Game explorer logo"
 				boxSize="60px"
 			/>
 			<Text>Navbar</Text>
