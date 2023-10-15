@@ -10,20 +10,25 @@ interface FetchGamesResponse {
 const useGames = () => {
 	const [games, setGames] = useState<Game[]>([]);
 	const [error, setError] = useState<AxiosError>();
+	const [isLoading, setLoading] = useState(false);
 
 	useEffect(() => {
+		setLoading(true);
 		const { request, cancel } = gameService.get<FetchGamesResponse>();
 		request
-			.then((res) => setGames(res.data.results))
+			.then((res) => {
+				setGames(res.data.results);
+				setLoading(false);
+			})
 			.catch((err: AxiosError) => {
 				if (err instanceof CanceledError) return;
 				setError(err);
-				console.log(err);
+				setLoading(false);
 			});
 		return () => cancel();
 	}, []);
 
-	return { games, error };
+	return { games, error, isLoading };
 };
 
 export default useGames;
