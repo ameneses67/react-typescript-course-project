@@ -1,5 +1,6 @@
-import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { BsMoonStarsFill } from "react-icons/bs";
+import { FaSun } from "react-icons/fa";
 
 const DarkModeSwitch = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
@@ -8,6 +9,7 @@ const DarkModeSwitch = () => {
 		"rgba(0, 0, 0, 0.08)",
 		"rgba(255, 255, 255, 0.08)"
 	);
+	const color = useColorModeValue("gray.500", "gray.400");
 
 	return (
 		<IconButton
@@ -15,12 +17,9 @@ const DarkModeSwitch = () => {
 			bg="transparent"
 			_hover={{ background: bg }}
 			onClick={toggleColorMode}
+			color={color}
 		>
-			{colorMode === "light" ? (
-				<MoonIcon boxSize={5} />
-			) : (
-				<SunIcon boxSize={5} />
-			)}
+			{colorMode === "light" ? <BsMoonStarsFill /> : <FaSun />}
 		</IconButton>
 	);
 };
