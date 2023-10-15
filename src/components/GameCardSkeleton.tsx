@@ -5,9 +5,8 @@ const GameCardSkeleton = () => {
 		<Card
 			rounded="xl"
 			overflow="hidden"
-			width="100%"
 		>
-			<Skeleton height="200px" />
+			<Skeleton height={{ base: "200px", "2xl": "300px" }} />
 			<CardBody>
 				<SkeletonText />
 			</CardBody>
