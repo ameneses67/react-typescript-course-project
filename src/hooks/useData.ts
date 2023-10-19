@@ -10,7 +10,8 @@ interface FetchResponse<T> {
 const useData = <T>(
 	endpoint: string,
 	requestConfig?: AxiosRequestConfig,
-	genreId?: number | null
+	genreId?: number | null,
+	platformId?: number | null
 ) => {
 	const [data, setData] = useState<T[]>([]);
 	const [error, setError] = useState<AxiosError>();
@@ -36,7 +37,7 @@ const useData = <T>(
 				setLoading(false);
 			});
 		return () => controller.abort();
-	}, [genreId]);
+	}, [genreId, platformId]);
 
 	return { data, error, isLoading };
 };
