@@ -1,19 +1,26 @@
-import { HStack, Image } from "@chakra-ui/react";
+import { Flex, Image } from "@chakra-ui/react";
 import logo from "../assets/logo.webp";
 import DarkModeSwitch from "./DarkModeSwitch";
 import SearchInput from "./SearchInput";
 
-const NavBar = () => {
+interface Props {
+	onSearch: (searchText: string) => void;
+}
+
+const NavBar = ({ onSearch }: Props) => {
 	return (
-		<HStack padding="1rem">
+		<Flex
+			padding="1rem"
+			alignItems="center"
+		>
 			<Image
 				src={logo}
 				alt="Game explorer logo"
 				boxSize="60px"
 			/>
-			<SearchInput />
+			<SearchInput onSearch={onSearch} />
 			<DarkModeSwitch />
-		</HStack>
+		</Flex>
 	);
 };
 
