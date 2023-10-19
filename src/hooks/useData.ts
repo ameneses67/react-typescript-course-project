@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient, { AxiosError, CanceledError } from "../services/api-client";
 import { AxiosRequestConfig } from "axios";
+import { GameQuery } from "../App";
 
 interface FetchResponse<T> {
 	count: number;
@@ -10,8 +11,9 @@ interface FetchResponse<T> {
 const useData = <T>(
 	endpoint: string,
 	requestConfig?: AxiosRequestConfig,
-	genreId?: number | null,
-	platformId?: number | null
+	gameQuery?: GameQuery | null
+	// genreId?: number | null,
+	// platformId?: number | null
 ) => {
 	const [data, setData] = useState<T[]>([]);
 	const [error, setError] = useState<AxiosError>();
@@ -37,7 +39,7 @@ const useData = <T>(
 				setLoading(false);
 			});
 		return () => controller.abort();
-	}, [genreId, platformId]);
+	}, [gameQuery]);
 
 	return { data, error, isLoading };
 };
