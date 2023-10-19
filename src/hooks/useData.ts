@@ -12,8 +12,6 @@ const useData = <T>(
 	endpoint: string,
 	requestConfig?: AxiosRequestConfig,
 	gameQuery?: GameQuery | null
-	// genreId?: number | null,
-	// platformId?: number | null
 ) => {
 	const [data, setData] = useState<T[]>([]);
 	const [error, setError] = useState<AxiosError>();
