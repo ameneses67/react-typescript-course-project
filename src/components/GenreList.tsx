@@ -10,6 +10,14 @@ interface Props {
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 	const { data, isLoading, error } = useGenres();
 
+	const dataSortedByName = data.sort((a, b) => {
+		const na = a.name,
+			nb = b.name;
+		if (na < nb) return -1;
+		if (na > nb) return 1;
+		return 0;
+	});
+
 	return (
 		<List
 			spacing="4"
@@ -23,7 +31,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 				/>
 			)}
 			{error && null}
-			{data.map((genre) => (
+			{dataSortedByName.map((genre) => (
 				<ListItem key={genre.id}>
 					<HStack>
 						<Image
