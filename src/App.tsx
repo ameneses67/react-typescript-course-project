@@ -8,6 +8,7 @@ import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
+import GamesHeading from "./components/GamesHeading";
 
 export interface GameQuery {
 	genre: Genre | null;
@@ -50,6 +51,7 @@ function App() {
 				area={"main"}
 				padding={5}
 			>
+				<GamesHeading gameQuery={gameQuery} />
 				<HStack
 					mb={5}
 					spacing={5}
