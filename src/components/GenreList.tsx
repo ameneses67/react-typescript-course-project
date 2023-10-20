@@ -3,7 +3,6 @@ import {
 	ListItem,
 	HStack,
 	Image,
-	Text,
 	Spinner,
 	Button,
 	Heading,
@@ -30,7 +29,8 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 	return (
 		<>
 			<Heading
-				my={5}
+				mb={5}
+				mt={2}
 				fontSize="2xl"
 			>
 				Genres
